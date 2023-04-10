@@ -26,12 +26,14 @@ export const notesRouter = createTRPCRouter({
         title: z
           .string()
           .min(5, { message: "Must be 5 or more characters of length!" })
-          .max(200, {
-            message: "Must not be more than 200 characters of length!",
+          .max(10, {
+            message: "Must not be more than 10 characters of length!",
           })
           .trim(),
         description: z.string()
         .min(1, { message: "Must provide a description!" })
+        .max(200, {
+          message: "Must not be more than 200 characters of length!",})
         .trim(),
       })
     )
@@ -74,11 +76,15 @@ export const notesRouter = createTRPCRouter({
         title: z
           .string()
           .min(5, { message: "Must be 5 or more characters of length!" })
-          .max(200, {
-            message: "Must not be more than 200 characters of length!",
+          .max(10, {
+            message: "Must not be more than 10 characters of length!",
           })
           .trim(),
-        description: z.string(),
+        description: z.string()
+        .min(1, { message: "Must provide a description!" })
+        .max(200, {
+          message: "Must not be more than 200 characters of length!",})
+        .trim(),
         id: z.string(),
       })
     )
